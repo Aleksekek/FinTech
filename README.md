@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-In%20Active%20Development-orange)](https://github.com/yourusername)
+[![Status](https://img.shields.io/badge/Status-In%20Active%20Development-orange)](https://github.com/Aleksekek)
 
 ![Banner](https://s.yimg.com/hd/cp-video-transcode/prod/2020-04/14/5e962a9f90a80d79a6352abb/5e962a9f90a80d79a6352abc_o_U_v2.jpg) 
 
