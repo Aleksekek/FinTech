@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-In%20Active%20Development-orange)](https://github.com/yourusername)
 
-![Banner]([https://via.placeholder.com/1920x300.png?text=Algorithmic+Trading+Project+-+ML+%26+Technical+Analysis](https://i.pinimg.com/originals/89/82/c9/8982c96abe8ac0322cdd2bf7df6cc619.jpg)) 
+![Banner](https://s.yimg.com/hd/cp-video-transcode/prod/2020-04/14/5e962a9f90a80d79a6352abb/5e962a9f90a80d79a6352abc_o_U_v2.jpg) 
 
 ## 📌 О проекте
 Путь через тернии к созданию интеллектуального торгового агента, который сможет потратить все мои деньги за меня за счёт:
