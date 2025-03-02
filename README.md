@@ -4,11 +4,10 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Status](https://img.shields.io/badge/Status-In%20Active%20Development-orange)](https://github.com/yourusername)
 
-![Banner](https://via.placeholder.com/1920x300.png?text=Algorithmic+Trading+Project+-+ML+%26+Technical+Analysis) 
-*Заглушка для баннера — можно добавить свою графику*
+![Banner]([https://via.placeholder.com/1920x300.png?text=Algorithmic+Trading+Project+-+ML+%26+Technical+Analysis](https://i.pinimg.com/originals/89/82/c9/8982c96abe8ac0322cdd2bf7df6cc619.jpg)) 
 
 ## 📌 О проекте
-Путь от начинающего трейдера к созданию интеллектуального торгового агента с использованием:
+Путь через тернии к созданию интеллектуального торгового агента, который сможет потратить все мои деньги за меня за счёт:
 - **Технического анализа** (индикаторы, паттерны)
 - **Машинного обучения** (прогнозирование, классификация)
 - **Оптимизации стратегий** (бэктестинг, риск-менеджмент)
@@ -22,12 +21,3 @@
 | Технический анализ    | TA-Lib, Plotly                             | 🚧 В процессе|
 | ML модели             | Scikit-learn, TensorFlow                   | ⏳ Планируется|
 | Бэктестинг            | Backtrader, PyAlgoTrade                    | ⏳ Планируется|
-
-## 🛠 Установка и запуск
-```bash
-git clone https://github.com/yourusername/trading-agent.git
-cd trading-agent
-pip install -r requirements.txt
-
-# Запуск базового анализа
-python src/data_analysis.py
