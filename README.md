@@ -24,6 +24,6 @@
 
 ## 🧠 Архитектура проекта  
 FinTech/
-├── 📦 DataLoader.py        # │  Класс для загрузки данных  
-├── 📊 DataVisualiser.py    # │  Визуализация графиков  
-└── 🔬 Work_Lab.ipynb       # │  Основной исследовательский блокнот  
+├── 📦 DataLoader.py&nbsp;# │  Класс для загрузки данных  
+├── 📊 DataVisualiser.py&nbsp;# │  Визуализация графиков  
+└── 🔬 Work_Lab.ipynb&nbsp;&nbsp;&nbsp;# │  Основной исследовательский блокнот  
