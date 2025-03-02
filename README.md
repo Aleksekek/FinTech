@@ -1,4 +1,4 @@
-# 🚀 Торговый агент: от нуля до автоматизированной стратегии
+# 🚀 Торговый агент: с нуля до автоматизированной стратегии
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
