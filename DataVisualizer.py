@@ -1,7 +1,6 @@
 import pandas as pd
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-import numpy as np
 
 
 class DataVisualizer:
@@ -107,7 +106,7 @@ class DataVisualizer:
 
         fig.update_layout(
             title=f'Цены закрытия {asset_type}',
-            template='plotly_white',
+            template='seaborn',
             xaxis_title='Дата и время',
             yaxis_title='Цена (USD)',
             hovermode='x unified',
@@ -188,7 +187,7 @@ class DataVisualizer:
             
             fig.update_layout(
                 title=f"{ticker} • {timeframe} данные • {period_label}",
-                template='plotly_white',
+                template='seaborn',
                 height=700,
                 showlegend=False,
                 margin=dict(t=80, b=20),
@@ -353,7 +352,7 @@ class DataVisualizer:
             ))
             fig.update_layout(
                 title=f'Выбросы цен для {ticker} (Z-score > {threshold})',
-                template='plotly_white',
+                template='seaborn',
                 height=500,
                 xaxis_title='Дата',
                 yaxis_title='Цена (USD)'
@@ -362,3 +361,79 @@ class DataVisualizer:
             
         except KeyError:
             print(f"Тикер {ticker} не найден в данных")
+
+
+    def plot_price_distribution(self, ticker: str, bins: int = None):
+        """
+        Визуализация распределения цен закрытия с использованием гистограммы и горизонтального боксплота.
+        
+        Параметры:
+            ticker (str): Тикер для анализа распределения цен
+            bins (int, опционально): Количество интервалов для гистограммы. Если None - автоматический расчет
+
+        Особенности:
+            - Совмещение вертикальной гистограммы и горизонтального боксплота
+            - Автоматический расчет оптимальных бинов гистограммы
+            - Цветовая синхронизация с общей стилистикой класса
+            - Интерактивные подсказки с квантильной информацией
+            - Адаптивная подпись осей в зависимости от категории
+        """
+        try:
+            close_prices = self._get_close_prices()[ticker].dropna()
+            if len(close_prices) < 10:
+                print(f"Недостаточно данных для {ticker} (минимум 10 точек)")
+                return
+
+            fig = make_subplots(
+                rows=2, cols=1,
+                vertical_spacing=0.05,
+                row_heights=[0.8, 0.2],
+                shared_xaxes=True
+            )
+
+            # Гистограмма
+            fig.add_trace(go.Histogram(
+                x=close_prices,
+                nbinsx=bins,
+                name='Распределение',
+                marker_color='#3498DB',
+                opacity=0.7,
+                showlegend=False,
+                hovertemplate="Диапазон: %{x}<br>Частота: %{y}",
+                histnorm='probability density' if bins else None
+            ), row=1, col=1)
+
+            # Боксплот
+            fig.add_trace(go.Box(
+                x=close_prices,
+                name=ticker,
+                marker_color='#2ECC71',
+                boxpoints=False,
+                orientation='h',
+                showlegend=False,
+                hoverinfo='x'
+            ), row=2, col=1)
+
+            # Форматирование подписей
+            currency = 'USD' if self.category == 'crypto' else ''
+            y_title = 'Плотность вероятности' if bins else 'Частота'
+
+            fig.update_layout(
+                title=f'Распределение цен {ticker}',
+                template='seaborn',
+                height=600,
+                xaxis_title=f'Цена закрытия, {currency}',
+                yaxis_title=y_title,
+                hovermode='x unified',
+                margin=dict(t=60, b=40)
+            )
+            
+            fig.update_yaxes(showticklabels=False, row=2, col=1)
+            fig.update_xaxes(row=2, col=1, title=f'Цена, {currency}')
+
+            fig.show()
+
+        except KeyError:
+            print(f"Тикер {ticker} не найден в данных")
+        except Exception as e:
+            print(f"Ошибка визуализации распределения: {str(e)}")
