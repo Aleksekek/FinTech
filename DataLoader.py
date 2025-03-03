@@ -182,6 +182,7 @@ class DataLoader:
                         return self._convert_to_user_tz(df)
                         
                     updated_df = self._update_data(df)
+                    updated_df = updated_df.T.groupby(level=0).ffill().bfill().T
                     updated_df.to_csv(self.filename)
                     return self._convert_to_user_tz(updated_df)
                     
@@ -190,7 +191,7 @@ class DataLoader:
         
         new_df = self._download_new_data()
         if not new_df.empty:
-            print(self.filename)
+            new_df = new_df.T.groupby(level=0).ffill().bfill().T
             new_df.to_csv(self.filename)
             return self._convert_to_user_tz(new_df)
             
