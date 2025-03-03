@@ -1,4 +1,4 @@
-# 🚀 Торговый агент: от нуля до автоматизированной стратегии
+# 🚀 Торговый агент: с нуля до автоматизированной стратегии
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
@@ -25,5 +25,5 @@
 ## 🧠 Архитектура проекта  
 FinTech/  
 ├── 📦 DataLoader.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # │  Класс для загрузки данных  
-├── 📊 DataVisualiser.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # │  Визуализация графиков  
+├── 📊 DataVisualiser.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # │  Визуализация загруженных данных  
 └── 🔬 Work_Lab.ipynb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # │  Основной исследовательский блокнот  
