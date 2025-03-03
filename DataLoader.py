@@ -85,9 +85,7 @@ class DataLoader:
         """
         safe_category = re.sub(r'[^a-zA-Z0-9_]', '', self.category)
         tickers_hash = hashlib.sha256(','.join(self.tickers).encode()).hexdigest()[:12]
-        end_date_str = self.end_date if self.end_date else \
-            datetime.now().replace(minute=0, second=0, microsecond=0).strftime('%Y-%m-%d-%H') if 'h' in self.interval \
-            else datetime.now().replace(minute=0, second=0, microsecond=0).strftime('%Y-%m-%d')
+        end_date_str = self.end_date or 'lastest'
         return f"{safe_category}_{tickers_hash}_{self.interval}_{self.start_date}_{end_date_str}.csv"
 
 
@@ -209,13 +207,13 @@ class DataLoader:
         Возвращает:
             bool: True если данные актуальны, False если требуется обновление
         """
-        now_utc = pd.Timestamp.now(tz='UTC')
+        now_utc = pd.Timestamp.now(tz='Europe/Moscow')
         age = now_utc - last_date
         
         thresholds = {
-            '1d': pd.Timedelta(hours=36),
-            '1h': pd.Timedelta(hours=3),
-            '1m': pd.Timedelta(minutes=5)
+            '1d': pd.Timedelta(hours=24),
+            '1h': pd.Timedelta(hours=1),
+            '1m': pd.Timedelta(minutes=1)
         }
         
         return age <= thresholds.get(self.interval[:2], pd.Timedelta(days=365))
