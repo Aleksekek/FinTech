@@ -41,7 +41,7 @@ class DataLoader:
         end_date: Optional[str] = None,
         user_timezone: str = 'Europe/Moscow'
     ):
-        self.tickers = tickers
+        self.tickers = sorted(list(set(tickers)))
         self.category = category
         self.interval = interval
         self.start_date = start_date
@@ -65,8 +65,6 @@ class DataLoader:
         """
         if not self.tickers:
             raise ValueError("Список тикеров не может быть пустым")
-        if len(self.tickers) != list(set(self.tickers)):
-            self.tickers = sorted(list(set(self.tickers)))
         if self.interval not in self.VALID_INTERVALS:
             raise ValueError(f"Недопустимый интервал. Допустимые значения: {self.VALID_INTERVALS}")
         try:
