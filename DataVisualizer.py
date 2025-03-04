@@ -221,16 +221,17 @@ class DataVisualizer:
             'Тикер': close_prices.columns,
             'Последняя цена': close_prices.iloc[-1].values,
             f'Δ% ({period})': close_prices.pct_change(freq=period).iloc[-1].values * 100,
-            'Волатильность (30д)': close_prices.pct_change().rolling(30).std().iloc[-1].values * 100,
-            'Ср. объем (30д)': volumes.iloc[-30:].mean().values
-        }).sort_values(f'Δ% ({period})', ascending=False)
+            'Волатильность (30 периодов)': close_prices.pct_change().rolling(30).std().iloc[-1].values * 100,
+            'Ср. объем (30 периодов)': volumes.iloc[-30:].mean().values
+        }).sort_values('Последняя цена', ascending=False)
 
         # Динамические настройки размера
         num_rows = len(metrics)
         row_height = 35
         header_height = 80
         max_height = 1000
-        table_height = min(header_height + (num_rows+2) * row_height, max_height)
+        HEIGH_COEF = 2
+        table_height = min(header_height + (num_rows+HEIGH_COEF) * row_height, max_height)
 
         changes = metrics[f'Δ% ({period})']
         max_change = max(abs(changes.max()), abs(changes.min())) or 1
@@ -240,8 +241,8 @@ class DataVisualizer:
             'Тикер': metrics['Тикер'],
             'Последняя цена': metrics['Последняя цена'].apply(lambda x: f"${x:,.2f}"),
             f'Δ% ({period})': metrics[f'Δ% ({period})'].apply(lambda x: f"{x:+,.1f}%"),
-            'Волатильность (30д)': metrics['Волатильность (30д)'].apply(lambda x: f"{x:.1f}%"),
-            'Ср. объем (30д)': metrics['Ср. объем (30д)'].apply(
+            'Волатильность (30 периодов)': metrics['Волатильность (30 периодов)'].apply(lambda x: f"{x:.1f}%"),
+            'Ср. объем (30 периодов)': metrics['Ср. объем (30 периодов)'].apply(
                 lambda x: f"{x/1e6:.1f}M" if x > 1e6 else f"{x/1e3:.0f}K")
         }
         
