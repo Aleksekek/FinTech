@@ -41,7 +41,7 @@ class DataLoader:
         end_date: Optional[str] = None,
         user_timezone: str = 'Europe/Moscow'
     ):
-        self.tickers = sorted(list(set(tickers)))
+        self.tickers = tickers
         self.category = category
         self.interval = interval
         self.start_date = start_date
@@ -65,6 +65,8 @@ class DataLoader:
         """
         if not self.tickers:
             raise ValueError("Список тикеров не может быть пустым")
+        if len(self.tickers) != list(set(self.tickers)):
+            self.tickers = sorted(list(set(self.tickers)))
         if self.interval not in self.VALID_INTERVALS:
             raise ValueError(f"Недопустимый интервал. Допустимые значения: {self.VALID_INTERVALS}")
         try:
@@ -182,7 +184,7 @@ class DataLoader:
                         return self._convert_to_user_tz(df)
                         
                     updated_df = self._update_data(df)
-                    updated_df = updated_df.T.groupby(level=0).ffill().bfill().T
+                    updated_df = updated_df.ffill().bfill()
                     updated_df.to_csv(self.filename)
                     return self._convert_to_user_tz(updated_df)
                     
@@ -191,7 +193,7 @@ class DataLoader:
         
         new_df = self._download_new_data()
         if not new_df.empty:
-            new_df = new_df.T.groupby(level=0).ffill().bfill().T
+            new_df = new_df.ffill().bfill()
             new_df.to_csv(self.filename)
             return self._convert_to_user_tz(new_df)
             
