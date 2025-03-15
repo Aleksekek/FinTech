@@ -1,6 +1,8 @@
 import pandas as pd
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
+from plotly.offline import plot, iplot, init_notebook_mode
+init_notebook_mode(connected=True)
 
 
 class DataVisualizer:
