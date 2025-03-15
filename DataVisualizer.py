@@ -112,7 +112,7 @@ class DataVisualizer:
             hovermode='x unified',
             height=600
         )
-        fig.show(render='svg')
+        fig.show()
 
 
     def plot_candlestick_with_volume(self, ticker: str, periods: int = 30):
