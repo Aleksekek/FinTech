@@ -1,8 +1,6 @@
 import pandas as pd
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-from plotly.offline import plot, iplot, init_notebook_mode
-init_notebook_mode(connected=True)
 
 
 class DataVisualizer:
@@ -114,7 +112,7 @@ class DataVisualizer:
             hovermode='x unified',
             height=600
         )
-        fig.show()
+        fig.show(render='svg')
 
 
     def plot_candlestick_with_volume(self, ticker: str, periods: int = 30):
